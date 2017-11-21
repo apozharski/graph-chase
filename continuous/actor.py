@@ -5,21 +5,24 @@ class BoundsRedefinitionException(Exception):
     pass
 
 class ChaseActor(object):
-    '''
-    This is the actor in a continuous chase scenario.
-    '''
-    def __init__(x_i=0,y_i=0,bounds = None):
-        '''
-        
-        '''
+    """This is a mobile random walk actor in a continuous chase scenario.
+    
+    Keyword arguments:
+    x_i -- Initial x position (default 0.0)
+    y_i -- Initial y position (default 0.0)
+    bounds -- symetrical (x,y) bounds in tuple form (default None)
+    """
+    def __init__(x_i=0.,y_i=0.,bounds = None):
+        """
+        """
         self.x = x_i
         self.y = y_i
         self.curr_count = 0
-        self.curr_head = (0,0)
+        self.curr_head = (0.,0.)
         self.bounds = bounds
 
     def walk():
-        '''Function that takes a single step in the random walk.'''
+        """Function that takes a single step in the random walk."""
         if self.curr_count > 0:
             self.curr_head = (2*random.random()*math.pi,1+(random.random()*9))
             self.curr_count = random.randint(1,10)
@@ -29,19 +32,21 @@ class ChaseActor(object):
         self.curr_count -= 1
 
     def set_bounds(bounds):
+        """Update the bounds for the current actor. Raises BoundsRedefinitionException if redefinition is attempted."""
         if bounds is None:
             self.bounds = bounds
         else:
             raise BoundsRedefinitionException("Bounds have already been defined for this actor. If createing a new chase use a new actor.")
     
 class StationaryActor(object):
-    '''
-    This is the stationary in a continuous chase scenario.
-    '''
-    def __init__(x_i=0,y_i=0):
-        '''
-        
-        '''
+    """This is the stationary actor in a continuous chase scenario."""
+    def __init__(x_i=0.,y_i=0.):
+        """Creates a new stationary actor with initial position, default is 0,0. 
+    
+        Keyword arguments:
+        x_i -- Initial x position (default 0.0)
+        y_i -- Initial y position (default 0.0)
+        """
         self.x = x_i
         self.y = y_i
 
