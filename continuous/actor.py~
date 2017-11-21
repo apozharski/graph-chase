@@ -1,0 +1,6 @@
+class Actor(object):
+    '''
+    This is the actor in a continuous chase scenario.'''
+    def __init__(x_i=0,y_i=0,):
+        self.x = x_i
+        self.y = y_i
