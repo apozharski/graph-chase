@@ -59,8 +59,11 @@ class StationaryActor(object):
 if __name__ == "__main__":
     c_actor = ChaseActor()
     c_actor.set_bounds((1000,1000))
+    s_actor = StationaryActor(x_i = random()*1000-500,y_i = random()*1000-500)
     for i in range(1000):
         c_actor.walk()
-        print(c_actor.x,c_actor.y)
+        s_actor.walk()
+        print("chaser",(c_actor.x,c_actor.y))
+        print("chasee",(s_actor.x,s_actor.y))
         
         
